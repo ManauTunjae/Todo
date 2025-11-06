@@ -35,7 +35,7 @@ function App() {
       id: crypto.randomUUID(),
     },
   ];
-  
+
   const [show, setShow] = useState(todoList);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -50,13 +50,24 @@ function App() {
     setShow([...show, newTodo]);
   }
 
-  function deleteTodo (id) {
-      let newTodo = show.filter(todo => {
-        return todo.id !== id
-      })
-      console.log(newTodo)
-      setShow(newTodo)
+  function deleteTodo(id) {
+    let newTodo = show.filter((todo) => {
+      return todo.id !== id;
+    });
+    console.log(newTodo);
+    setShow(newTodo);
   }
+
+  function checkTodo(id) {
+    let checkTodo = show.map((todo) => {
+      if (todo.id === id) {
+        todo.done = !todo.done;
+      }
+      return todo;
+    });
+    setShow(checkTodo);
+  }
+
   return (
     <>
       <h1>Todo List</h1>
@@ -78,7 +89,7 @@ function App() {
         />
       </div>
       <button onClick={() => createTodo()}>Lägg till</button>
-      <TodoList todolist={show} deleteTodo={deleteTodo} />
+      <TodoList todolist={show} deleteTodo={deleteTodo} checkTodo={checkTodo} />
     </>
   );
 }
