@@ -1,0 +1,18 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+#new-todo {
+  display: flex;
+  flex-direction: column;
+}
